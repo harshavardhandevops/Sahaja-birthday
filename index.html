@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#38251f">
+<title>పుట్టిన రోజు ప్రత్యేక సంచిక | Sahaja · Goldie</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Telugu:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&display=swap');
+.telugu-title{font-family:"Noto Serif Telugu","Noto Sans Telugu",serif;font-weight:600;line-height:1.35;letter-spacing:.01em}
+.reveal-caption{font-family:"Noto Sans Telugu",Arial,sans-serif;font-size:clamp(18px,4vw,24px);line-height:1.65}
+
+:root{--ink:#39251e;--paper:#fff8ec;--brown:#754c37;--gold:#d7a65a;--rose:#c87578}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:Georgia,"Times New Roman",serif;background:radial-gradient(ellipse at 15% 10%,#866047 0,transparent 34%),radial-gradient(ellipse at 90% 90%,#574034 0,transparent 36%),linear-gradient(135deg,#211914,#594031 55%,#2c201a)}
+button{font:inherit}.topbar{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;gap:12px;align-items:center;padding:13px 18px;color:#fff3df;background:#291c17ed;border-bottom:1px solid #b8915b77;font:11px Arial,sans-serif;letter-spacing:1.2px}
+.topbar span:last-child{color:#e8c78d}.progress{height:4px;background:#ffffff25}#progressBar{height:100%;width:3.84%;background:var(--gold);transition:width .35s}
+.stage{width:min(850px,94%);margin:28px auto 50px}.book{position:relative;min-height:520px;padding:clamp(24px,5vw,54px);overflow:hidden;border:1px solid #d8b984;border-radius:5px 22px 22px 5px;background:linear-gradient(90deg,#e4d0ad 0,#fff8ec 5%,#fffaf0 95%,#e7d2ad 100%);box-shadow:0 24px 70px #120b08a6,inset 0 0 55px #a87a3715;animation:pageIn .4s ease}
+.book:before{content:"";position:absolute;left:13px;top:0;bottom:0;width:2px;background:#a9845540}.book:after{content:"";position:absolute;right:0;top:0;bottom:0;width:8px;background:linear-gradient(90deg,#d5bc92,#f9eedb,#d8bd93);pointer-events:none}
+.book>*{position:relative;z-index:1}.hidden{display:none!important}.eyebrow{text-transform:uppercase;letter-spacing:2.5px;font:11px Arial,sans-serif;color:var(--brown)}
+h1{font-size:clamp(34px,7vw,59px);line-height:1.04;font-weight:normal;margin:17px 0}h2{font-size:clamp(25px,5vw,38px);line-height:1.15;font-weight:normal;margin:14px 0}
+p{font-size:17px;line-height:1.75}.small{font-size:13px;color:#806b58}.ornament{margin:20px auto;color:#b4864a;text-align:center;letter-spacing:8px}
+.art{display:grid;place-items:center;min-height:145px;margin:20px 0;border:1px solid #d7bf99;border-radius:6px;background:radial-gradient(circle at 50% 40%,#f5dfb9,#e4c69a 70%,#d6b88a);font-size:76px}
+.art.dark{color:#fff0d7;background:radial-gradient(circle at 50% 35%,#795c42,#30241c 75%)}.art.rose{background:linear-gradient(135deg,#f5dfe0,#e6b9b2,#f9eadc)}.art.green{background:linear-gradient(135deg,#e1e6d2,#b9c8a6,#f7eedb)}
+.btn{display:inline-block;border:1px solid #785239;border-radius:4px;background:var(--brown);color:#fff8ec;padding:13px 20px;margin:6px 5px 6px 0;cursor:pointer;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px);background:#4d3024}.btn.light{color:var(--ink);background:transparent}.btn.gold{color:#39251e;background:#e8c88f;border-color:#b58a4e}
+.choices{display:grid;gap:10px;margin:22px 0}.choices .btn{width:100%;text-align:left;margin:0;background:#f6ead8;color:var(--ink);border-color:#ddc6a5}.choices .btn:hover{background:#ead6b8}
+.note{padding:18px;margin:18px 0;border-left:3px solid var(--gold);background:#f3e6d1;line-height:1.8}.result{min-height:42px;margin:15px 0;padding:12px;background:#f3e7d6;border-radius:4px;line-height:1.65}
+.two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0}.tile{padding:15px;background:#f3e7d5;border:1px solid #e2cbaa;border-radius:5px;line-height:1.6}.tile strong{display:block;margin-bottom:6px}
+.photo-placeholder{padding:24px 12px;text-align:center;background:#f0e2cc;border:1px dashed #a98962;border-radius:5px}.photo-placeholder .emoji{font-size:43px}
+.footer{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:18px;font:11px Arial,sans-serif;letter-spacing:1px;color:#846b52}
+#toast{position:fixed;z-index:10;left:50%;bottom:20px;width:min(90%,500px);transform:translateX(-50%);padding:14px 18px;border-radius:5px;background:#291c17;color:#fff3df;box-shadow:0 5px 25px #0005;text-align:center}
+.confetti{position:fixed;top:-12px;width:9px;height:12px;z-index:9;pointer-events:none;animation:fall 3.8s linear forwards}
+.teddy{font-size:clamp(56px,12vw,100px);text-align:center;line-height:1.3}
+@keyframes pageIn{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:.15}}
+@media(max-width:540px){.stage{margin-top:16px}.book{min-height:470px;padding:27px 22px}p{font-size:16px}.two-col{grid-template-columns:1fr 1fr}.topbar{font-size:9px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+body.lights-out{background:#000!important}
+body.lights-out .topbar,
+body.lights-out .progress,
+body.lights-out main,
+body.lights-out #toast{visibility:hidden!important}
+.lights-out-screen{position:fixed;inset:0;z-index:100;background:#000;display:grid;place-items:center;color:#fff;text-align:center}
+.lights-out-screen.hidden{display:none!important}
+.lights-out-action{display:flex;flex-direction:column;align-items:center;gap:16px;background:transparent;color:#f7e8c8;border:0;cursor:pointer;padding:28px;font-family:Georgia,serif;font-size:20px}
+.lights-out-candle{font-size:56px;filter:drop-shadow(0 0 18px #e5a84d);animation:flicker 1.5s infinite alternate}
+.lights-out-action small{font:12px Arial,sans-serif;letter-spacing:1px;color:#a99b88}
+@keyframes flicker{from{opacity:.65;transform:scale(.97)}to{opacity:1;transform:scale(1.04)}}
+
+
+/* Greeting-card treatment for every page */
+.book {
+  border-radius: 18px;
+  border: 2px solid #d6b982;
+  box-shadow: 0 18px 55px #120b08a6, inset 0 0 0 5px #fff8ec,
+              inset 0 0 0 6px #e6cfaa;
+  padding: clamp(28px, 5vw, 56px);
+}
+.book:after {
+  content: "✧  WITH LOVE  ✧";
+  display: block;
+  text-align: center;
+  margin-top: 28px;
+  padding-top: 14px;
+  border-top: 1px solid #dfc79f;
+  color: #a17b4c;
+  font: 10px Arial, sans-serif;
+  letter-spacing: 2px;
+}
+.book h1, .book h2 { color: #603e2c; }
+.book .note { border-radius: 0 12px 12px 0; }
+
+</style>
+</head>
+<body>
+<header class="topbar"><span>26 LITTLE CHAPTERS FOR SAHAJA</span><span id="chapterLabel">SLIDE 01 / 26</span></header>
+<div class="progress"><div id="progressBar"></div></div>
+<main class="stage">
+<section class="book" id="s1"><div class="eyebrow">A birthday story, made just for you</div><div class="art dark">🎂</div><div class="ornament">✦ ✧ ✦</div><h1 class="telugu-title">పుట్టిన రోజు ప్రత్యేక సంచిక</h1><p>Today isn't just another date on the calendar. It's a chance to remind one very particular girl that her presence makes life a little warmer, funnier, and better.</p><div class="note">Twenty-six years of you. And this is a tiny celebration of the person you are becoming.</div><button class="btn gold" onclick="go(2)">OPEN YOUR SURPRISE →</button><div class="footer"><span>PERSONAL EDITION</span><span>MADE FOR SAHAJA</span></div></section>
+<section class="book hidden" id="s2"><div class="eyebrow">The mystery person</div><div class="art rose">🕵️‍♀️ 🐣</div><h2>ఎవరు ఈ అమ్మాయి?</h2><p>Ee prathyeka sanchika evari kosamo guess cheyyagalava? 👀</p><div class="note">Oka chinna reveal undi… ready aa? 🙂‍↔️</div><button class="btn gold" onclick="revealSahaja()">REVEAL THE NAME ✨</button><div id="nameReveal" class="result hidden"><div class="eyebrow">The birthday star is…</div><h1>Sahaja! 🎂</h1><p class="reveal-caption"><strong>Also known as Goldie 💛</strong></p><p class="reveal-caption"><strong>A little bit of <em>Sokulaadi</em>, a whole lot of <em>Book Lover</em>.</strong> 💅📖</p><p>Happy Birthday, Sahaja! 🐣😇</p><button class="btn gold" onclick="go(3)">OPEN YOUR SANCHIKA →</button></div></section>
+<section class="book hidden" id="s3"><div class="eyebrow">Slide 03 · A tiny request</div><div class="art">🐥</div><h2>Put the world on pause.</h2><p>For the next few minutes, you don't have to solve anything, prove anything, or be the doctor who has an answer for everything.</p><div class="note">Just be Sahaja. The human being underneath all the roles. He deserves a little care, too.</div><button class="btn gold" onclick="go(4)">I'M HERE →</button></section>
+<section class="book hidden" id="s4"><div class="eyebrow">Slide 04 · The birthday rule</div><div class="art">😇</div><h2>Today, you're allowed to receive.</h2><p>You spend so much time learning, thinking, preparing, and trying to build a future. I hope today you let people show up for you without feeling you have to earn it first.</p><div class="note">You matter even on the days you haven't achieved anything impressive. Especially then.</div><button class="btn gold" onclick="go(5)">NEXT →</button></section>
+<section class="book hidden" id="s5"><div class="eyebrow">Slide 05 · A small friendship confession</div><div class="art">🏫</div><h2>We weren't always this close.</h2><p>School wasn't the chapter where we became inseparable. Back then, I don't think either of us knew this friendship would grow into what it is now.</p><div class="note">And honestly, I like that our story didn't have to follow the usual timeline.</div><button class="btn gold" onclick="go(6)">TURN THE PAGE →</button></section>
+<section class="book hidden" id="s6">
+  <div class="eyebrow">OVER-SENSITIVE HEART, BEAUTIFUL SOUL 💗</div><div class="eyebrow">Slide 06 · Then life did its thing</div><div class="art">🌱</div><h2>Somewhere along the way…</h2><p>Adult life gave us more conversations, more chances to understand each other, and little moments that made the friendship feel real.</p><div class="note">I'm grateful we got to know each other beyond the people we were in school. The later chapters turned out to be pretty special.</div><button class="btn gold" onclick="go(7)">NEXT →</button></section>
+<section class="book hidden" id="s7"><div class="eyebrow">Slide 07 · What I value</div><div class="art">🤝</div><h2>You feel like a real friend.</h2><p>Not because every day has to be exciting or every conversation has to be deep. Sometimes friendship is simply knowing there's someone you can talk to, laugh with, or check in on.</p><div class="note">I'm glad you've become one of those people in my life. I don't say that lightly.</div><button class="btn gold" onclick="go(8)">KEEP GOING →</button></section>
+<section class="book hidden" id="s8"><div class="eyebrow">Slide 08 · For your soft heart</div><div class="art rose">🐣</div><h2>You don't have to hide it.</h2><p>Being sensitive isn't a flaw. It means things reach you, people matter to you, and your heart doesn't move through the world like it's made of stone.</p><div class="note">I hope you never let the world convince you that being caring is something to be embarrassed about. It isn't.</div><button class="btn gold" onclick="go(9)">NEXT →</button></section>
+<section class="book hidden" id="s9"><div class="eyebrow">Slide 09 · On the difficult days</div><div class="art">🫠</div><h2>You don't have to be okay all the time.</h2><p>If a day feels heavy, you don't have to turn it into a joke immediately or pretend it didn't affect you. You can take your time. You can rest. You can tell someone.</p><div class="note">I hope you give yourself the same patience you would offer a person you care about.</div><button class="btn gold" onclick="go(10)">NEXT →</button></section>
+<section class="book hidden" id="s10">
+  <div class="eyebrow">DRAMA LOVER · BINGE-WATCHING QUEEN 🎬</div><div class="eyebrow">Slide 10 · A permission slip</div><div class="art">🧸</div><h2>Please be gentle with yourself.</h2><p>You are allowed to learn slowly, change your mind, make mistakes, and start again. One bad day cannot cancel all the effort you've put in.</p><div class="note">I hope your inner voice becomes a little kinder this year. You deserve encouragement from yourself, too.</div><button class="btn gold" onclick="go(11)">NEXT →</button></section>
+<section class="book hidden" id="s11">
+  <div class="eyebrow">A LITTLE SWEETNESS, A LOT OF PERSONALITY 🥭</div><div class="eyebrow">Slide 11 · Doctor Sahaja</div><div class="art green">🩺</div><h2>A caring person behind the title.</h2><p>Your work asks you to pay attention to other people and their stories. I hope you remember that the person doing the caring needs care as well.</p><div class="note">May you keep your curiosity, your compassion, and the reasons that first made this path meaningful to you.</div><button class="btn gold" onclick="go(12)">NEXT →</button></section>
+<section class="book hidden" id="s12"><div class="eyebrow">Slide 12 · For your AIAPGET journey</div><div class="art green">🎓</div><h2>One step at a time, Doctor.</h2><p>I know next year's preparation matters to you. I hope your hard work turns into confidence—not just because of a result, but because you can look back and know you showed up for yourself.</p><div class="note">On the anxious days, breathe. On the tired days, rest. On the good days, let yourself feel proud. Keep going, Sahaja. ✊</div><button class="btn gold" onclick="go(13)">NEXT →</button></section>
+<section class="book hidden" id="s13"><div class="eyebrow">Slide 13 · When the syllabus looks endless</div><div class="art">📚</div><h2>You are more than one exam.</h2><p>I hope you prepare with focus without letting a rank or a result decide how you see yourself. Exams matter, but they are not the full measure of your intelligence, kindness, or future.</p><div class="note">May you walk into that exam room feeling prepared, steady, and proud of the work you've done.</div><button class="btn gold" onclick="go(14)">NEXT →</button></section>
+<section class="book hidden" id="s14">
+  <div class="eyebrow">BOOKWORM WITH A SOFT SPOT FOR STORIES 📚</div><div class="eyebrow">Slide 14 · A little courage</div><div class="art">✊</div><h2>For the moments you doubt yourself.</h2><p>When your brain tells you that everyone else is ahead, remember that you only see pieces of their journey. You know the effort you've put in, even when nobody else sees it.</p><div class="note">Keep your head up. Your pace is allowed to be your own.</div><button class="btn gold" onclick="go(15)">NEXT →</button></section>
+<section class="book hidden" id="s15"><div class="eyebrow">Slide 15 · The chai-to-coffee plot</div><div class="art">☕</div><h2>Character development, apparently.</h2><p>Your tea-to-coffee era deserves its own dramatic soundtrack. 🙂‍↔️ But jokes aside, I hope you always have little rituals that make ordinary days feel comforting.</p><div class="note">May there always be a warm cup nearby and someone to share an unhurried conversation with.</div><button class="btn gold" onclick="go(16)">NEXT →</button></section>
+<section class="book hidden" id="s16"><div class="eyebrow">Slide 16 · A little sweetness</div><div class="art">🥭</div><h2>May life give you softer days.</h2><p>I hope this year brings you moments that feel simple and genuinely good: a laugh you didn't expect, a peaceful evening, a message at the right time, a day that turns out better than you thought.</p><div class="note">You don't need every moment to be extraordinary for life to be beautiful.</div><button class="btn gold" onclick="go(17)">NEXT →</button></section>
+<section class="book hidden" id="s17"><div class="eyebrow">Slide 17 · A tiny reminder</div><div class="art">🐧</div><h2>You make a difference quietly.</h2><p>Sometimes we don't know which ordinary conversation made someone feel less alone, or which small act of care stayed with them. I hope you never underestimate the good you bring into people's lives.</p><div class="note">Even when you don't notice it, your presence can matter.</div><button class="btn gold" onclick="go(18)">NEXT →</button></section>
+<section class="book hidden" id="s18"><div class="eyebrow">Slide 23 · Wish 06 — New memories</div><div class="art">📸</div><h2>Moments worth keeping.</h2><p>May this year give you memories that you'll smile about months later—small adventures, honest talks, unexpected good news, and people who make an ordinary day memorable.</p><div class="note">I hope you collect memories that remind you life is happening now, not only after the next milestone.</div><button class="btn gold" onclick="go(19)">NEXT WISH →</button></section>
+<section class="book hidden" id="s19"><div class="eyebrow">Slide 24 · Wish 07 — A teddy-sized hug</div><div class="art">🧸</div><h2>For when words aren't enough.</h2><p>Imagine this tiny teddy sitting beside you, offering the world's least complicated advice: breathe, unclench your shoulders, drink some water, and remember you're cared for.</p><div class="note">You don't have to reply with a perfect sentence. A 🫠 is a complete emotional statement.</div><button class="btn gold" onclick="go(20)">NEXT →</button></section>
+<section class="book hidden" id="s20"><div class="eyebrow">Slide 25 · Birthday ritual</div><div class="art rose">🕯️</div><h1>Okay, birthday girl. Your turn.</h1><p>Take one slow breath. Let your shoulders drop. Think of one thing you want to leave behind, and one thing you hope to welcome into your twenty-sixth year.</p><div class="note">When you're ready, tap the candle button. Make a wish that belongs only to you.</div><div class="teddy">🧸 🎂 🕯️</div><button class="btn gold" onclick="blowCandles()">BLOW OUT THE CANDLES 🕯️</button><div id="candleResult" class="result hidden"></div><button class="btn light" onclick="go(21)">NEXT →</button></section>
+<section class="book hidden" id="s21"><div class="eyebrow">Slide 26 · A quiet wish</div><div class="art">🎂</div><h1>Eyes closed. Wish made.</h1><p>For just a few seconds, close your eyes and imagine a year where you feel more at peace with yourself, more proud of your progress, and more surrounded by love than you expected.</p><div class="note">No need to tell anyone your wish. Keep it safe. Then open your eyes when you're ready. 😇</div><div class="teddy">🧸 🤍 🐣</div><button class="btn gold" onclick="closeEyes()">I MADE MY WISH →</button><div id="eyesResult" class="result hidden"></div><button class="btn light" onclick="go(22)">OPEN YOUR EYES →</button></section>
+<section class="book hidden" id="s22"><div class="eyebrow">Slide 27 · From me to you</div><div class="art dark">💌</div><h1>One thing I really want you to know…</h1><p>Sahaja, I'm genuinely glad we became closer when we did. We may not have been the closest in school, but adulthood gave us a friendship I'm grateful for. I value the person you've let me get to know—the thoughtful, sensitive, funny, determined person behind all the everyday noise.</p><div class="note">I hope twenty-six brings you the opportunities you've worked for, the calm you need, people who understand you, and enough small joys to make the hard days feel manageable. You don't have to have everything figured out. I'm rooting for you, bro. ✊</div><button class="btn gold" onclick="go(23)">ONE LAST THING →</button></section>
+<section class="book hidden" id="s23"><div class="eyebrow">Slide 28 · The final page</div><div class="art dark">🎉</div><div class="ornament">✦ ✧ ✦</div><h1>HAPPY BIRTHDAY, SAHAJA, BIRTHDAY GIRL!</h1><div class="photo-placeholder"><div class="emoji">📸 🐧</div><strong>THE MAIN CHARACTER</strong><p class="small">Add one of Sahaja's favourite photos here when you're ready.</p></div><p>Twenty-six years of becoming, learning, changing, and finding your way. I hope the next chapter treats you kindly—and I hope you treat yourself kindly, too.</p><div class="note">Thanks for being part of my story. Here's to more conversations, more laughs, and a friendship that keeps getting better. 🐣🐧😇</div><button class="btn gold" onclick="celebrate()">CELEBRATE! 🎉</button><button class="btn light" onclick="go(1)">↻ READ AGAIN</button><div class="footer"><span>WRITTEN WITH FRIENDSHIP</span><span>ALWAYS ROOTING FOR YOU</span></div></section>
+
+
+<section class="book hidden" id="s24">
+<div class="eyebrow">Slide 29 · A tiny happy detail</div>
+<div class="art rose">🍌 🐥</div>
+<h2>Banana chips & little joys 🍌</h2>
+<p>May banana chips, silly conversations, and little familiar comforts make your ordinary days brighter. More than anything, may you always have someone to share those small joys and a laugh with. 🐣</p>
+<div class="note">Not every good thing has to be a big achievement. Sometimes a small joy is enough. 🙂</div>
+<button class="btn gold" onclick="go(20)">NEXT →</button>
+</section>
+<section class="book hidden" id="s25">
+<div class="eyebrow">Slide 30 · An important question</div>
+<div class="art">🤝 🐧</div>
+<h2>Sahaja… best friend aa? 👀</h2>
+<p>Okay, serious question. Our friendship got closer with time, and I'm genuinely glad it did. So let's settle this with one very important birthday poll.</p>
+<div class="choices">
+<button class="btn" onclick="bestFriendAnswer(true)">YES, obviously! ✊</button>
+<button class="btn" id="noButton" onclick="moveNoButton()">NO 🙂‍↔️</button>
+</div>
+<div id="friendResult" class="result hidden"></div>
+<button class="btn light" onclick="go(21)">CONTINUE →</button>
+</section>
+<section class="book hidden" id="s26">
+<div class="eyebrow">Slide 31 · 26 remedies, 26 birthday wishes</div>
+<div class="art green">🩺 🌼</div>
+<h2>Doctor Sahaja's birthday casebook</h2>
+<p>Twenty-six familiar homeopathic remedy names, each paired with a wish for your life. These are symbolic birthday wishes—not prescriptions, medical advice, or dosing instructions. 😇</p>
+<div class="two-col">
+<div class="tile"><strong>01 · Aconitum napellus</strong>May courage find you before fear gets too loud.</div>
+<div class="tile"><strong>02 · Arnica montana</strong>May you recover your strength after every exhausting stretch.</div>
+<div class="tile"><strong>03 · Belladonna</strong>May you feel bold enough to take up space.</div>
+<div class="tile"><strong>04 · Bryonia alba</strong>May you find steadiness when everything feels unsettled.</div>
+<div class="tile"><strong>05 · Calendula officinalis</strong>May kindness help you heal from life's rough edges.</div>
+<div class="tile"><strong>06 · Chamomilla</strong>May patience meet you on your most irritable days.</div>
+<div class="tile"><strong>07 · Gelsemium sempervirens</strong>May your nerves soften when an important moment arrives.</div>
+<div class="tile"><strong>08 · Hepar sulphuris</strong>May you feel safe enough to be tender and honest.</div>
+<div class="tile"><strong>09 · Hypericum perforatum</strong>May the hurt you rarely mention become easier to carry.</div>
+<div class="tile"><strong>10 · Ignatia amara</strong>May your heart have room for complicated feelings.</div>
+<div class="tile"><strong>11 · Kali phosphoricum</strong>May your energy return when you've given too much.</div>
+<div class="tile"><strong>12 · Lachesis mutus</strong>May you speak your truth without shrinking yourself.</div>
+<div class="tile"><strong>13 · Lycopodium clavatum</strong>May confidence grow quietly, from the inside out.</div>
+<div class="tile"><strong>14 · Mercurius solubilis</strong>May clarity help you through confusing chapters.</div>
+<div class="tile"><strong>15 · Natrum muriaticum</strong>May you feel understood without needing to explain everything.</div>
+<div class="tile"><strong>16 · Nux vomica</strong>May you find balance when life asks too much of you.</div>
+<div class="tile"><strong>17 · Phosphorus</strong>May your warmth keep reaching the people who need it.</div>
+<div class="tile"><strong>18 · Pulsatilla nigricans</strong>May you receive comfort as freely as you give it.</div>
+<div class="tile"><strong>19 · Rhus toxicodendron</strong>May each small step lead you toward renewed momentum.</div>
+<div class="tile"><strong>20 · Ruta graveolens</strong>May your hard work be matched with proper rest.</div>
+<div class="tile"><strong>21 · Sepia officinalis</strong>May you make space for your own needs without guilt.</div>
+<div class="tile"><strong>22 · Silicea</strong>May quiet persistence carry you toward your goals.</div>
+<div class="tile"><strong>23 · Sulphur</strong>May curiosity keep your mind bright and open.</div>
+<div class="tile"><strong>24 · Thuja occidentalis</strong>May you feel comfortable being your whole, imperfect self.</div>
+<div class="tile"><strong>25 · Veratrum album</strong>May you find composure when the pressure is high.</div>
+<div class="tile"><strong>26 · Coffea cruda</strong>May your late-night dreams become beautiful real-life milestones—and may you still get enough sleep. ☕</div>
+</div>
+<div class="note">No remedy doses here—just 26 little wishes for the person behind the doctor. Keep learning, keep caring, and remember to care for yourself, too. 🐣🐧</div>
+<button class="btn gold" onclick="go(20)">GO TO THE CANDLE WISH 🕯️</button>
+<button class="btn light" onclick="go(18)">BACK TO BIRTHDAY MESSAGE</button>
+</section>
+
+</main>
+
+<div id="lightsOutScreen" class="lights-out-screen hidden" aria-hidden="true">
+  <button class="lights-out-action" onclick="restoreLights()" aria-label="Turn the lights back on">
+    <span class="lights-out-candle">🕯️</span>
+    <span>Lights out… make a wish.</span>
+    <small>Tap gently when you're ready ✨</small>
+  </button>
+</div>
+
+<div id="toast" class="hidden" role="status" aria-live="polite"></div>
+<script>
+const total = 26;
+function go(n){
+ for(let i=1;i<=total;i++){const el=document.getElementById("s"+i);if(el)el.classList.add("hidden")}
+ document.getElementById("s"+n).classList.remove("hidden");
+ document.getElementById("chapterLabel").textContent="SLIDE "+String(n).padStart(2,"0")+" / "+total;
+ document.getElementById("progressBar").style.width=(n/total*100)+"%";
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+function showToast(message){
+ const toast=document.getElementById("toast");toast.textContent=message;toast.classList.remove("hidden");
+ clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>toast.classList.add("hidden"),3200);
+}
+function bestFriendAnswer(answer){
+ const result=document.getElementById("friendResult");
+ result.textContent="I knew it. 😇 I'm glad adulthood brought us closer, and I hope we keep choosing this friendship. Best-friend energy unlocked! ✊";
+ result.classList.remove("hidden");
+ showToast("Correct answer. No appeals accepted. 🐧");
+}
+function moveNoButton() {
+  const button = document.getElementById("noButton");
+  const result = document.getElementById("friendResult");
+  button.textContent = "NO? Catch me! 🙂‍↔️";
+  button.style.position = "relative";
+  button.style.left = Math.floor(Math.random() * 160 - 80) + "px";
+  button.style.top = Math.floor(Math.random() * 60 - 30) + "px";
+  result.textContent = "Nice try, Goldie 😌 You have only one option: select YES! 💛";
+  result.classList.remove("hidden");
+  showToast("You have only one option: YES! 😌");
+}
+function blowCandles(){
+ const result=document.getElementById("candleResult");
+ document.body.classList.add("lights-out");
+ result.classList.add("hidden");
+ const overlay=document.getElementById("lightsOutScreen");
+ overlay.classList.remove("hidden");
+ overlay.setAttribute("aria-hidden","false");
+ showToast("Close your eyes, make a wish, and blow… 🕯️");
+}
+
+function restoreLights(){
+ const overlay=document.getElementById("lightsOutScreen");
+ overlay.classList.add("hidden");
+ overlay.setAttribute("aria-hidden","true");
+ document.body.classList.remove("lights-out");
+ const result=document.getElementById("candleResult");
+ result.innerHTML="✨ The candles are out. Keep your wish close to your heart. May your 26th year bring you a little more peace, courage, and happiness than you expected. 🐣😇";
+ result.classList.remove("hidden");
+ showToast("Wish made. Happy birthday, Sahaja! 🎂");
+}
+
+function closeEyes(){
+ const result=document.getElementById("eyesResult");
+ result.textContent="🧸 Teddy says: you don't have to carry everything alone. You are loved, you are learning, and you are allowed to take things one day at a time. 🫠🤍";
+ result.classList.remove("hidden");showToast("A tiny teddy hug, just for you. 🧸🐥");
+}
+function celebrate(){
+ for(let i=0;i<140;i++){
+  const piece=document.createElement("div");piece.className="confetti";
+  piece.style.left=Math.random()*100+"vw";
+  piece.style.backgroundColor="hsl("+Math.floor(Math.random()*360)+",80%,65%)";
+  piece.style.animationDelay=Math.random()*1.5+"s";document.body.appendChild(piece);
+  setTimeout(()=>piece.remove(),5000);
+ }
+ showToast("HAPPY 26TH BIRTHDAY, SAHAJA! 🎂❤️🐣");
+}
+function revealSahaja(){
+ const reveal=document.getElementById("nameReveal");
+ reveal.classList.remove("hidden");
+ showToast("Surprise! It's Sahaja! 🎉🐥");
+}
+go(1);
+</script>
+</body>
+</html>
